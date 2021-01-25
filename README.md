@@ -35,4 +35,6 @@ services:
       - "8080:8080"
 ```
 
-Then run `docker-compose up` (append `-d` to go to background). Once the container starts up, go to <http://localhost:8080/vnc.html?autoconnect=true> and use Cypress!
+Then run `docker-compose up` (append `-d` to go to background). Once the container starts up, go to <http://localhost:8080/vnc.html?autoconnect=true>. You should now see this:
+
+![screenshot](https://user-images.githubusercontent.com/193136/105757006-fae92200-5f7f-11eb-8e4b-eed64ad9d305.png)
