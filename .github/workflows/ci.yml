@@ -25,8 +25,8 @@ jobs:
               const page = await browser.newPage();
               await page.setViewport({ width: 1280, height: 720 });
               await page.goto('http://localhost:8080/vnc.html?autoconnect=true');
-              await page.screenshot({path: '/tmp/screenshot.png'});
               await new Promise(r => setTimeout(r, 10000));
+              await page.screenshot({path: '/tmp/screenshot.png'});
               await browser.close();
             })();
           EOF
