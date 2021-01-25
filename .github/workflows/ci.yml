@@ -13,11 +13,12 @@ jobs:
       - run: npx wait-on http://localhost:8080
       - run: npm i puppeteer-core make-promises-safe
       - run: |
+          export PUPPETEER_EXECUTABLE_PATH="$(which google-chrome)"
           node << 'EOF'
             require('make-promises-safe');
-            const puppeteer = require('puppeteer');
+            const puppeteer = require('puppeteer-core');
             (async () => {
-              const browser = await puppeteer.launch();
+              const browser = await puppeteer.launch({});
               const page = await browser.newPage();
               await page.setViewport({ width: 1280, height: 720 });
               await page.goto('http://localhost:8080/vnc.html?autoconnect=true');
