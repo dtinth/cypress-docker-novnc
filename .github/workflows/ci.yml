@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: ruby -e 'puts File.read("README.md").scan(/```yml(.*?)```/m)' | tee docker-compose.yml
+      - run: docker-compose up -d
+      - run: npx wait-on http://localhost:8080
+      - run: google-chrome --headless --screenshot=/tmp/screenshot.png --window-size=1280,720 http://localhost:8080
+      - name: Upload screenshot as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: screenshot
+          path: /tmp/screenshot.png
