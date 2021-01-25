@@ -12,7 +12,10 @@ services:
       - DISPLAY=novnc:0.0
     depends_on:
       - novnc
-    entrypoint: cypress open --project /e2e
+    entrypoint:
+      - bash
+      - -c
+      - npx wait-on http://novnc:8080 && cypress open --project /e2e
     working_dir: /e2e
     volumes:
       - ./:/e2e
