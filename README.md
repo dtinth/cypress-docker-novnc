@@ -6,7 +6,7 @@ Run Cypress inside a Docker container with noVNC to access Cypress Test Runner i
 ```yml
 version: '3.2'
 services:
-  ide:
+  cypress:
     image: cypress/included:6.3.0
     environment:
       - DISPLAY=novnc:0.0
