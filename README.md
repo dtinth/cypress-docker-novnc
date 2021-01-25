@@ -1,5 +1,5 @@
 # cypress-docker-novnc
-Run Cypress inside a Docker container with noVNC to access Cypress Test Runner in the web browser
+Run Cypress inside a Docker container with noVNC to access Cypress Test Runner in the web browser. This lets you develop tests with others through (e.g.) [Visual Studio Live Share](https://visualstudio.microsoft.com/services/live-share/) allowing participants to share the Cypress Test Runner screen.
 
 ## docker-compose.yml
 
