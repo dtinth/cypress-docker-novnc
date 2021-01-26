@@ -15,22 +15,24 @@ services:
   cypress:
     image: cypress/included:6.3.0
     environment:
-      - DISPLAY=novnc:1.0
+      - DISPLAY=novnc:0.0
     depends_on:
       - novnc
     entrypoint:
       - bash
       - -c
-      - npx wait-on http://novnc && cypress open --project /e2e
+      - npx wait-on http://novnc:8080 && cypress open --project /e2e
     working_dir: /e2e
     volumes:
       - ./:/e2e
   novnc:
-    image: dorowu/ubuntu-desktop-lxde-vnc
+    image: theasp/novnc:latest
     environment:
-      - RESOLUTION=1280x720
+      - DISPLAY_WIDTH=1280
+      - DISPLAY_HEIGHT=720
+      - RUN_XTERM=no
     ports:
-      - "8080:80"
+      - "8080:8080"
 ```
 
 Then run `docker-compose up` (append `-d` to go to background). Once the container starts up, go to <http://localhost:8080/vnc.html?autoconnect=true>. You should now see this:
